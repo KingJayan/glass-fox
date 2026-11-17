@@ -11,6 +11,15 @@
   --gf-glass: rgba(30, 30, 33, 0.82);
   --gf-blur: blur(28px) saturate(160%);
   --gf-spec: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+  /* surfaces: light from the upper left, shadows fall down */
+  --gf-recess: #141416;
+  --gf-recess-edge: #252528;
+  --gf-recess-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.03), 0 1px 0 rgba(255, 255, 255, 0.025);
+  --gf-raise: linear-gradient(145deg, #242427, #1b1b1e);
+  --gf-raise-edge: #303034;
+  --gf-raise-shadow: 0 1px 3px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --gf-press-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.45);
   --gf-r-s: 8px;
   --gf-r-m: 10px;
   --gf-r-l: 14px;
@@ -47,14 +56,14 @@
 
   --input-background-color: var(--gf-surface) !important;
   --input-text-color: var(--gf-text) !important;
-  --toolbar-field-background-color: var(--gf-surface) !important;
-  --toolbar-field-focus-background-color: var(--gf-elevated) !important;
+  --toolbar-field-background-color: var(--gf-recess) !important;
+  --toolbar-field-focus-background-color: var(--gf-recess) !important;
   --toolbar-field-text-color: var(--gf-text) !important;
   --toolbar-field-text-color-focus: var(--gf-text) !important;
-  --toolbar-field-border-color: var(--gf-border-soft) !important;
-  --toolbar-field-border-color-focus: rgba(138, 180, 248, 0.45) !important;
-  --urlbar-background-color: var(--gf-surface) !important;
-  --urlbar-background-color-focus: var(--gf-elevated) !important;
+  --toolbar-field-border-color: var(--gf-recess-edge) !important;
+  --toolbar-field-border-color-focus: rgba(138, 180, 248, 0.55) !important;
+  --urlbar-background-color: var(--gf-recess) !important;
+  --urlbar-background-color-focus: var(--gf-recess) !important;
   --urlbar-background-border-radius: var(--gf-r-m) !important;
   --urlbar-background-box-shadow-open: var(--gf-spec), 0 24px 60px rgba(0, 0, 0, 0.55) !important;
   --urlbar-box-background-color: var(--gf-elevated) !important;
@@ -119,7 +128,21 @@ sidebar-main,
 
 .toolbarbutton-1:not(:hover, [open]) > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
   opacity: 0.75;
-  transition: opacity var(--gf-fast) var(--gf-ease) !important;
+}
+
+.toolbarbutton-1 > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack, .toolbarbutton-text) {
+  transition: opacity var(--gf-fast) var(--gf-ease), background-color var(--gf-fast) var(--gf-ease), box-shadow var(--gf-fast) var(--gf-ease) !important;
+}
+
+/* bare at rest, a raised key under the cursor, pressed in while held or open */
+.toolbarbutton-1:not([disabled]):hover > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack, .toolbarbutton-text) {
+  background: var(--gf-raise) !important;
+  box-shadow: var(--gf-raise-shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+.toolbarbutton-1:not([disabled]):is(:hover:active, [open], [checked]) > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack, .toolbarbutton-text) {
+  background: var(--gf-recess) !important;
+  box-shadow: var(--gf-press-shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.03) !important;
 }
 
 .tab-background {
@@ -130,8 +153,8 @@ sidebar-main,
 }
 
 .tab-background:is([selected], [multiselected]) {
-  background: var(--gf-elevated) !important;
-  box-shadow: var(--gf-spec), 0 0 0 1px var(--gf-border-soft) !important;
+  background: var(--gf-raise) !important;
+  box-shadow: var(--gf-raise-shadow), 0 0 0 1px rgba(255, 255, 255, 0.06) !important;
 }
 
 .tabbrowser-tab .tab-label {
@@ -147,14 +170,23 @@ sidebar-main,
 }
 
 .urlbar-background {
-  box-shadow: var(--gf-spec) !important;
-  transition: background-color var(--gf-fast) var(--gf-ease), border-color var(--gf-fast) var(--gf-ease) !important;
+  box-shadow: var(--gf-recess-shadow) !important;
+  transition: background-color var(--gf-fast) var(--gf-ease), border-color var(--gf-fast) var(--gf-ease), box-shadow var(--gf-fast) var(--gf-ease) !important;
 }
 
-#urlbar:is([open], [breakout-extend]) > .urlbar-background {
+/* fine lit edge instead of the stock 2px focus outline */
+#urlbar[focused]:not([open]) > .urlbar-background {
+  outline: 0 !important;
+  border-color: rgba(138, 180, 248, 0.55) !important;
+  box-shadow: var(--gf-recess-shadow), 0 0 0 3px rgba(138, 180, 248, 0.1) !important;
+}
+
+#urlbar[open] > .urlbar-background {
   background-color: var(--gf-glass) !important;
   backdrop-filter: var(--gf-blur) !important;
   border-color: var(--gf-border) !important;
+  outline: 0 !important;
+  box-shadow: var(--gf-spec), 0 24px 60px rgba(0, 0, 0, 0.55) !important;
 }
 
 .urlbarView-row {
@@ -179,8 +211,19 @@ sidebar-main,
   color: var(--gf-text-2) !important;
 }
 
+#PersonalToolbar .bookmark-item {
+  transition: background-color var(--gf-fast) var(--gf-ease), box-shadow var(--gf-fast) var(--gf-ease), color var(--gf-fast) var(--gf-ease) !important;
+}
+
 #PersonalToolbar .bookmark-item:hover {
   color: var(--gf-text) !important;
+  background: rgba(255, 255, 255, 0.045) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.04) !important;
+}
+
+#PersonalToolbar .bookmark-item:is(:hover:active, [open]) {
+  background: var(--gf-recess) !important;
+  box-shadow: var(--gf-press-shadow) !important;
 }
 
 panel::part(content),
