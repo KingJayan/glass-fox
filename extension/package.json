@@ -4,13 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node build.mjs",
-    "watch": "node build.mjs --watch",
-    "typecheck": "tsc --noEmit",
-    "test": "node --test --experimental-strip-types test/*.test.ts",
-    "lint": "web-ext lint --source-dir dist",
-    "start": "npm run build && web-ext run --source-dir dist --firefox=firefox",
-    "package": "npm run build && web-ext build --source-dir dist --artifacts-dir artifacts --overwrite-dest"
+    "build": "bun build.mjs",
+    "watch": "bun build.mjs --watch",
+    "typecheck": "bunx tsc --noEmit",
+    "test": "bun test --experimental-strip-types test/*.test.ts",
+    "lint": "bunx web-ext lint --source-dir dist",
+    "start": "bun run build && bunx web-ext run --source-dir dist --firefox=firefox",
+    "package": "bun run build && bunx web-ext build --source-dir dist --artifacts-dir artifacts --overwrite-dest"
   },
   "devDependencies": {
     "@types/firefox-webext-browser": "^120.0.4",

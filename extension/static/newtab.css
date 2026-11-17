@@ -9,7 +9,6 @@
   --accent: #8ab4f8;
   --spec: inset 0 1px 0 rgba(255, 255, 255, 0.07);
 
-  /* surfaces: light comes from the upper left, shadows fall down and right */
   --recess: #141416;
   --recess-edge: #252528;
   --recess-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.03), 0 1px 0 rgba(255, 255, 255, 0.025);
