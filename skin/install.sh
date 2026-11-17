@@ -16,6 +16,11 @@ fi
 
 [[ -d "$profile" ]] || { echo "profile not found: $profile" >&2; exit 1; }
 
+if pgrep -xq firefox || pgrep -xq Firefox; then
+  echo "quit firefox first (cmd+q), then run again" >&2
+  exit 1
+fi
+
 mkdir -p "$profile/chrome"
 cp "$here/userChrome.css" "$profile/chrome/userChrome.css"
 cp "$here/user.js" "$profile/user.js"
