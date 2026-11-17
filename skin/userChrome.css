@@ -171,6 +171,10 @@ sidebar-main,
   opacity: 1;
 }
 
+#identity-box.extensionPage #identity-icon-label {
+  display: none !important;
+}
+
 #PersonalToolbar .bookmark-item {
   color: var(--gf-text-2) !important;
 }
