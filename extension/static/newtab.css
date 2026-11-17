@@ -1,0 +1,240 @@
+:root {
+  --bg: #09090b;
+  --surface: #171719;
+  --elevated: #222225;
+  --border: #343438;
+  --border-soft: rgba(255, 255, 255, 0.06);
+  --text: #f5f5f7;
+  --text-2: #98989f;
+  --accent: #8ab4f8;
+  --glass: rgba(23, 23, 25, 0.78);
+  --spec: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.4 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.light {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(60% 45% at 50% 18%, rgba(138, 180, 248, 0.075), transparent 100%),
+    radial-gradient(40% 35% at 78% 8%, rgba(190, 160, 255, 0.045), transparent 100%);
+  pointer-events: none;
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 28px;
+  height: 100%;
+  padding: 0 24px 8vh;
+  animation: rise 420ms var(--ease) both;
+}
+
+.hero {
+  text-align: center;
+}
+
+.clock {
+  margin: 0 0 6px;
+  color: var(--text-2);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  margin: 0;
+  font: 600 44px/1.1 -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.sub {
+  margin: 8px 0 0;
+  color: var(--text-2);
+  font-size: 15px;
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--spec), 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(600px, 100%);
+  height: 50px;
+  padding: 0 14px 0 16px;
+  border-radius: 14px;
+  transition: border-color 160ms var(--ease), box-shadow 160ms var(--ease);
+}
+
+.search:focus-within {
+  border-color: rgba(138, 180, 248, 0.45);
+  box-shadow: var(--spec), 0 0 0 4px rgba(138, 180, 248, 0.1), 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.search-icon {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  fill: none;
+  stroke: var(--text-2);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.search input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+}
+
+.search input::placeholder {
+  color: var(--text-2);
+}
+
+kbd {
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-2);
+  font: 500 11px/1 ui-monospace, "SF Mono", monospace;
+  transition: opacity 160ms var(--ease);
+}
+
+.search:focus-within kbd {
+  opacity: 0;
+}
+
+.sites {
+  display: grid;
+  grid-template-columns: repeat(4, 112px);
+  gap: 10px;
+}
+
+.sites:empty {
+  display: none;
+}
+
+.site {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 16px 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 12px;
+  outline: 0;
+  transition: background-color 160ms var(--ease), border-color 160ms var(--ease), color 160ms var(--ease), transform 160ms var(--ease);
+}
+
+.site:hover,
+.site:focus-visible {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-soft);
+  color: var(--text);
+}
+
+.site:focus-visible {
+  border-color: rgba(138, 180, 248, 0.5);
+}
+
+.site:active {
+  transform: scale(0.97);
+}
+
+.tile {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--elevated);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--spec);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--text);
+}
+
+.tile img {
+  width: 24px;
+  height: 24px;
+}
+
+.label {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.key {
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  color: var(--text-2);
+  font: 500 10px/1 ui-monospace, "SF Mono", monospace;
+  opacity: 0;
+  transition: opacity 160ms var(--ease);
+}
+
+body.keys .key {
+  opacity: 0.45;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@media (max-width: 560px) {
+  .sites {
+    grid-template-columns: repeat(2, 112px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  .stage {
+    animation: none !important;
+    transition: none !important;
+  }
+}

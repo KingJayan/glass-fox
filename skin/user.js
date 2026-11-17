@@ -1,0 +1,12 @@
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+user_pref("layout.css.backdrop-filter.enabled", true);
+user_pref("gfx.webrender.all", true);
+user_pref("sidebar.revamp", true);
+user_pref("sidebar.verticalTabs", true);
+user_pref("browser.compactmode.show", true);
+user_pref("browser.uidensity", 1);
+user_pref("browser.tabs.inTitlebar", 1);
+user_pref("browser.newtabpage.activity-stream.showSponsored", false);
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+user_pref("browser.urlbar.suggest.quicksuggest.sponsored", false);
+user_pref("svg.context-properties.content.enabled", true);
