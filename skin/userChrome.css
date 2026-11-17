@@ -5,12 +5,12 @@
   --gf-surface: #171719;
   --gf-elevated: #222225;
   --gf-border: #343438;
-  --gf-border-soft: rgba(255, 255, 255, 0.06);
+  --gf-border-soft: rgba(255, 255, 255, 0.07);
   --gf-text: #f5f5f7;
   --gf-text-2: #98989f;
   --gf-accent: #8ab4f8;
-  --gf-glass: rgba(23, 23, 25, 0.8);
-  --gf-glass-hi: rgba(34, 34, 37, 0.82);
+  --gf-accent-soft: rgba(138, 180, 248, 0.16);
+  --gf-glass: rgba(30, 30, 33, 0.82);
   --gf-blur: blur(28px) saturate(160%);
   --gf-spec: inset 0 1px 0 rgba(255, 255, 255, 0.07);
   --gf-r-s: 8px;
@@ -19,177 +19,166 @@
   --gf-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --gf-fast: 140ms;
 
-  --toolbar-bgcolor: var(--gf-bg) !important;
+  color-scheme: dark !important;
+
+  --toolbox-background-color: var(--gf-bg) !important;
+  --toolbox-background-color-inactive: var(--gf-bg) !important;
+  --toolbox-text-color: var(--gf-text) !important;
+  --toolbox-text-color-inactive: var(--gf-text-2) !important;
+  --toolbox-background-gradient: none !important;
+  --toolbox-background-image: none !important;
+  --toolbar-background-color: transparent !important;
+  --toolbar-text-color: var(--gf-text) !important;
+  --toolbar-bgcolor: transparent !important;
   --toolbar-color: var(--gf-text) !important;
-  --toolbar-field-background-color: var(--gf-surface) !important;
-  --toolbar-field-focus-background-color: var(--gf-elevated) !important;
-  --toolbar-field-color: var(--gf-text) !important;
-  --toolbar-field-focus-color: var(--gf-text) !important;
-  --toolbar-field-border-color: var(--gf-border-soft) !important;
-  --toolbar-field-focus-border-color: var(--gf-border) !important;
+  --chrome-content-separator-color: var(--gf-border-soft) !important;
+  --tabs-navbar-separator-color: transparent !important;
+  --tabpanel-background-color: var(--gf-bg) !important;
+
+  --toolbarbutton-icon-fill: var(--gf-text-2) !important;
   --toolbarbutton-border-radius: var(--gf-r-s) !important;
   --toolbarbutton-hover-background: rgba(255, 255, 255, 0.06) !important;
   --toolbarbutton-active-background: rgba(255, 255, 255, 0.1) !important;
+  --focus-outline-color: var(--gf-accent) !important;
+
+  --tab-background-color: transparent !important;
+  --tab-background-color-hover: rgba(255, 255, 255, 0.045) !important;
+  --tab-background-color-selected: var(--gf-elevated) !important;
   --tab-selected-bgcolor: var(--gf-elevated) !important;
   --tab-border-radius: var(--gf-r-m) !important;
-  --tab-min-height: 32px !important;
-  --focus-outline-color: var(--gf-accent) !important;
-  --arrowpanel-background: var(--gf-glass-hi) !important;
+
+  --input-background-color: var(--gf-surface) !important;
+  --input-text-color: var(--gf-text) !important;
+  --toolbar-field-background-color: var(--gf-surface) !important;
+  --toolbar-field-focus-background-color: var(--gf-elevated) !important;
+  --toolbar-field-text-color: var(--gf-text) !important;
+  --toolbar-field-text-color-focus: var(--gf-text) !important;
+  --toolbar-field-border-color: var(--gf-border-soft) !important;
+  --toolbar-field-border-color-focus: rgba(138, 180, 248, 0.45) !important;
+  --urlbar-background-color: var(--gf-surface) !important;
+  --urlbar-background-color-focus: var(--gf-elevated) !important;
+  --urlbar-background-border-radius: var(--gf-r-m) !important;
+  --urlbar-background-box-shadow-open: var(--gf-spec), 0 24px 60px rgba(0, 0, 0, 0.55) !important;
+  --urlbar-box-background-color: var(--gf-elevated) !important;
+  --urlbar-box-background-color-hover: rgba(255, 255, 255, 0.08) !important;
+  --urlbar-box-text-color: var(--gf-text-2) !important;
+  --urlbarView-highlight-background: var(--gf-accent-soft) !important;
+  --urlbarView-highlight-color: var(--gf-text) !important;
+  --urlbarView-separator-color: var(--gf-border-soft) !important;
+
+  --sidebar-background-color: transparent !important;
+  --sidebar-text-color: var(--gf-text) !important;
+  --sidebar-border-color: var(--gf-border-soft) !important;
+  --sidebar-divider-color: var(--gf-border-soft) !important;
+  --sidebar-content-separator-color: var(--gf-border-soft) !important;
+
+  --panel-background: var(--gf-glass) !important;
+  --panel-color: var(--gf-text) !important;
+  --panel-border-color: var(--gf-border) !important;
+  --panel-border-radius: var(--gf-r-l) !important;
+  --panel-separator-color: var(--gf-border-soft) !important;
+  --arrowpanel-background: var(--gf-glass) !important;
   --arrowpanel-color: var(--gf-text) !important;
   --arrowpanel-border-color: var(--gf-border) !important;
   --arrowpanel-border-radius: var(--gf-r-l) !important;
-  --panel-separator-color: var(--gf-border-soft) !important;
-  --urlbar-box-bgcolor: var(--gf-elevated) !important;
-  --urlbar-box-hover-bgcolor: rgba(255, 255, 255, 0.08) !important;
-  --urlbarView-highlight-background: rgba(138, 180, 248, 0.14) !important;
-  --urlbarView-highlight-color: var(--gf-text) !important;
-  --urlbarView-separator-color: var(--gf-border-soft) !important;
-  --sidebar-background-color: var(--gf-bg) !important;
-  --sidebar-text-color: var(--gf-text) !important;
-  --sidebar-border-color: var(--gf-border-soft) !important;
-  --chrome-content-separator-color: transparent !important;
+}
+
+body {
+  background-color: var(--gf-bg) !important;
+  background-image: none !important;
+  color: var(--gf-text) !important;
+}
+
+/* macos draws a native titlebar material here that ignores theme colors */
+body::after {
+  appearance: none !important;
+  background: none !important;
 }
 
 #navigator-toolbox {
+  appearance: none !important;
   background: var(--gf-bg) !important;
   border-bottom: 0 !important;
 }
 
+.browser-toolbar,
 #TabsToolbar,
 #nav-bar,
-#PersonalToolbar {
-  background: transparent !important;
-  border: 0 !important;
+#PersonalToolbar,
+#sidebar-main,
+sidebar-main,
+#sidebar-container,
+#sidebar-box,
+#browser,
+#tabbrowser-tabbox,
+#tabbrowser-tabpanels {
+  appearance: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-color: var(--gf-border-soft) !important;
   box-shadow: none !important;
 }
 
-#nav-bar {
-  padding: 4px 8px !important;
-}
-
-toolbarbutton,
-.toolbarbutton-1 > .toolbarbutton-icon,
-.toolbarbutton-1 > .toolbarbutton-badge-stack {
-  transition: background-color var(--gf-fast) var(--gf-ease), opacity var(--gf-fast) var(--gf-ease) !important;
-}
-
-.toolbarbutton-1:not(:hover, [open]) > .toolbarbutton-icon,
-.toolbarbutton-1:not(:hover, [open]) > .toolbarbutton-badge-stack {
-  opacity: 0.72;
-}
-
-.tabbrowser-tab {
-  padding-inline: 2px !important;
+.toolbarbutton-1:not(:hover, [open]) > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack) {
+  opacity: 0.75;
+  transition: opacity var(--gf-fast) var(--gf-ease) !important;
 }
 
 .tab-background {
   border-radius: var(--gf-r-m) !important;
-  margin-block: 3px !important;
-  box-shadow: none !important;
   outline: 0 !important;
+  box-shadow: none !important;
   transition: background-color var(--gf-fast) var(--gf-ease) !important;
 }
 
-.tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected]) {
-  background: rgba(255, 255, 255, 0.04) !important;
-}
-
-.tab-background[selected] {
+.tab-background:is([selected], [multiselected]) {
   background: var(--gf-elevated) !important;
   box-shadow: var(--gf-spec), 0 0 0 1px var(--gf-border-soft) !important;
 }
 
-.tab-label {
-  font-size: 12.5px !important;
+.tabbrowser-tab .tab-label {
   color: var(--gf-text-2) !important;
 }
 
-.tabbrowser-tab[selected] .tab-label {
+.tabbrowser-tab:is([selected], :hover) .tab-label {
   color: var(--gf-text) !important;
 }
 
-.tab-close-button {
-  border-radius: 6px !important;
-  opacity: 0;
-  transition: opacity var(--gf-fast) var(--gf-ease) !important;
+.tabbrowser-tab:not([selected], :hover) .tab-close-button {
+  opacity: 0 !important;
 }
 
-.tabbrowser-tab:hover .tab-close-button,
-.tabbrowser-tab[selected] .tab-close-button {
-  opacity: 0.7;
-}
-
-#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab {
-  padding-block: 1px !important;
-}
-
-#sidebar-main,
-#sidebar-box,
-sidebar-main {
-  background: var(--gf-bg) !important;
-  border: 0 !important;
-}
-
-#urlbar-background {
-  border-radius: var(--gf-r-m) !important;
-  border: 1px solid var(--gf-border-soft) !important;
+.urlbar-background {
   box-shadow: var(--gf-spec) !important;
   transition: background-color var(--gf-fast) var(--gf-ease), border-color var(--gf-fast) var(--gf-ease) !important;
 }
 
-#urlbar:not([focused]) #urlbar-input {
-  text-align: center;
-}
-
-#urlbar[breakout][breakout-extend] {
-  z-index: 10 !important;
-}
-
-#urlbar[breakout][breakout-extend] > #urlbar-background {
-  background: var(--gf-glass-hi) !important;
+#urlbar:is([open], [breakout-extend]) > .urlbar-background {
+  background-color: var(--gf-glass) !important;
   backdrop-filter: var(--gf-blur) !important;
   border-color: var(--gf-border) !important;
-  border-radius: var(--gf-r-l) !important;
-  box-shadow: var(--gf-spec), 0 24px 60px rgba(0, 0, 0, 0.55) !important;
-  animation: none !important;
-}
-
-#urlbar[focused="true"] > #urlbar-background {
-  outline: 0 !important;
-  border-color: rgba(138, 180, 248, 0.45) !important;
-}
-
-#urlbar-input {
-  font-size: 13px !important;
 }
 
 .urlbarView-row {
   border-radius: var(--gf-r-s) !important;
 }
 
-.urlbarView-row:hover > .urlbarView-row-inner {
-  background: rgba(255, 255, 255, 0.05) !important;
-}
-
 #identity-box,
-#tracking-protection-icon-container,
-#page-action-buttons > *:not(#star-button-box, #reader-mode-button) {
+#tracking-protection-icon-container {
   opacity: 0.6;
   transition: opacity var(--gf-fast) var(--gf-ease) !important;
 }
 
-#urlbar:hover #identity-box,
-#urlbar:hover #tracking-protection-icon-container {
+#urlbar:is(:hover, [focused]) :is(#identity-box, #tracking-protection-icon-container) {
   opacity: 1;
 }
 
-panel,
-menupopup {
-  --panel-background: var(--gf-glass-hi) !important;
-  --panel-color: var(--gf-text) !important;
-  --panel-border-color: var(--gf-border) !important;
-  --panel-border-radius: var(--gf-r-l) !important;
-  --panel-shadow: 0 18px 48px rgba(0, 0, 0, 0.5) !important;
+#PersonalToolbar .bookmark-item {
+  color: var(--gf-text-2) !important;
+}
+
+#PersonalToolbar .bookmark-item:hover {
+  color: var(--gf-text) !important;
 }
 
 panel::part(content),
@@ -198,37 +187,13 @@ menupopup::part(content) {
   box-shadow: var(--gf-spec), 0 18px 48px rgba(0, 0, 0, 0.5) !important;
 }
 
-menupopup menuitem,
-menupopup menu {
-  border-radius: 6px !important;
-  margin-inline: 4px !important;
-  padding-block: 5px !important;
-}
-
-menupopup menuitem[_moz-menuactive],
-menupopup menu[_moz-menuactive] {
-  background: rgba(138, 180, 248, 0.16) !important;
+menupopup :is(menuitem, menu)[_moz-menuactive] {
+  background-color: var(--gf-accent-soft) !important;
   color: var(--gf-text) !important;
 }
 
 .subviewbutton {
   border-radius: var(--gf-r-s) !important;
-}
-
-#tabbrowser-tabbox,
-#tabbrowser-tabpanels {
-  background: var(--gf-bg) !important;
-}
-
-.browserStack > browser {
-  border-radius: var(--gf-r-m) !important;
-  margin: 0 6px 6px !important;
-  outline: 1px solid var(--gf-border-soft) !important;
-  outline-offset: -1px;
-}
-
-#appcontent .browserStack > browser {
-  clip-path: inset(0 round var(--gf-r-m));
 }
 
 findbar {
