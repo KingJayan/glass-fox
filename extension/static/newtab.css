@@ -7,8 +7,19 @@
   --text: #f5f5f7;
   --text-2: #98989f;
   --accent: #8ab4f8;
-  --glass: rgba(23, 23, 25, 0.78);
   --spec: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+  /* surfaces: light comes from the upper left, shadows fall down and right */
+  --recess: #141416;
+  --recess-edge: #252528;
+  --recess-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.03), 0 1px 0 rgba(255, 255, 255, 0.025);
+  --raise: linear-gradient(145deg, #242427, #1b1b1e);
+  --raise-edge: #303034;
+  --raise-edge-hi: #45454b;
+  --raise-shadow: 0 3px 7px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --raise-shadow-hi: 0 6px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  --press-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.35);
+  --focus-ring: 0 0 0 3px rgba(138, 180, 248, 0.12);
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   color-scheme: dark;
 }
@@ -72,13 +83,6 @@ h1 {
   font-size: 15px;
 }
 
-.glass {
-  background: var(--glass);
-  backdrop-filter: blur(28px) saturate(160%);
-  border: 1px solid var(--border-soft);
-  box-shadow: var(--spec), 0 20px 50px rgba(0, 0, 0, 0.45);
-}
-
 .search {
   display: flex;
   align-items: center;
@@ -87,12 +91,19 @@ h1 {
   height: 50px;
   padding: 0 14px 0 16px;
   border-radius: 14px;
+  background: var(--recess);
+  border: 1px solid var(--recess-edge);
+  box-shadow: var(--recess-shadow);
   transition: border-color 160ms var(--ease), box-shadow 160ms var(--ease);
 }
 
+.search:hover {
+  border-color: #2c2c30;
+}
+
 .search:focus-within {
-  border-color: rgba(138, 180, 248, 0.45);
-  box-shadow: var(--spec), 0 0 0 4px rgba(138, 180, 248, 0.1), 0 20px 50px rgba(0, 0, 0, 0.45);
+  border-color: rgba(138, 180, 248, 0.5);
+  box-shadow: var(--recess-shadow), var(--focus-ring);
 }
 
 .search-icon {
@@ -127,8 +138,10 @@ kbd {
   min-width: 22px;
   height: 22px;
   padding: 0 6px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--raise-edge);
   border-radius: 6px;
+  background: var(--raise);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   color: var(--text-2);
   font: 500 11px/1 ui-monospace, "SF Mono", monospace;
   transition: opacity 160ms var(--ease);
@@ -154,28 +167,17 @@ kbd {
   justify-items: center;
   gap: 10px;
   padding: 16px 8px 12px;
-  border: 1px solid transparent;
   border-radius: 14px;
   color: var(--text-2);
   text-decoration: none;
   font-size: 12px;
   outline: 0;
-  transition: background-color 160ms var(--ease), border-color 160ms var(--ease), color 160ms var(--ease), transform 160ms var(--ease);
+  transition: color 160ms var(--ease);
 }
 
 .site:hover,
 .site:focus-visible {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: var(--border-soft);
   color: var(--text);
-}
-
-.site:focus-visible {
-  border-color: rgba(138, 180, 248, 0.5);
-}
-
-.site:active {
-  transform: scale(0.97);
 }
 
 .tile {
@@ -184,12 +186,32 @@ kbd {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: var(--elevated);
-  border: 1px solid var(--border-soft);
-  box-shadow: var(--spec);
+  background: var(--raise);
+  border: 1px solid var(--raise-edge);
+  box-shadow: var(--raise-shadow);
   font-weight: 600;
   font-size: 18px;
   color: var(--text);
+  transition: transform 160ms var(--ease), box-shadow 160ms var(--ease), border-color 160ms var(--ease);
+}
+
+.site:hover .tile {
+  transform: translateY(-2px);
+  border-color: var(--raise-edge-hi);
+  box-shadow: var(--raise-shadow-hi);
+}
+
+.site:focus-visible .tile {
+  border-color: rgba(138, 180, 248, 0.6);
+  box-shadow: var(--raise-shadow), var(--focus-ring);
+}
+
+.site:active .tile {
+  transform: translateY(1px);
+  border-color: var(--raise-edge);
+  background: var(--recess);
+  box-shadow: var(--press-shadow);
+  transition-duration: 60ms;
 }
 
 .tile img {
