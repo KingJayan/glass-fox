@@ -3,7 +3,7 @@
 simple dark glass UI for Firefox.
 
 - `skin/` - `userChrome.css` for the browser chrome (tabs, toolbar, urlbar, menus, panels).
-- `extension/` - TS WebExtensionl dark theme via the theme API and custom new tab page.
+- `extension/` - TS WebExtension dark theme via the theme API and custom new tab page.
 
 ### skin
 
