@@ -10,13 +10,14 @@ esac
 
 profile="${1:-}"
 if [[ -z "$profile" ]]; then
-  rel="$(awk -F= '/^\[Install/{f=1} f&&/^Default=/{print $2; exit}' "$root/profiles.ini")"
-  profile="$root/$rel"
+  prefs="$(ls -t "$root"/Profiles/*/prefs.js "$root"/*/prefs.js 2>/dev/null | head -1 || true)"
+  [[ -n "$prefs" ]] || { echo "no firefox profile found in $root" >&2; exit 1; }
+  profile="$(dirname "$prefs")"
 fi
 
 [[ -d "$profile" ]] || { echo "profile not found: $profile" >&2; exit 1; }
 
-if pgrep -xq firefox || pgrep -xq Firefox; then
+if pgrep -xi firefox >/dev/null; then
   echo "quit firefox first (cmd+q), then run again" >&2
   exit 1
 fi
