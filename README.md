@@ -1,24 +1,27 @@
-# glass fox
+## `glass fox`
 
-Dark, restrained glass UI for Firefox. Two parts:
+simple dark glass UI for Firefox.
 
-- `skin/` — `userChrome.css` for the browser chrome (tabs, toolbar, urlbar, menus, panels).
-- `extension/` — TypeScript WebExtension: dark theme via the theme API, plus a workspace new tab page.
+- `skin/` - `userChrome.css` for the browser chrome (tabs, toolbar, urlbar, menus, panels).
+- `extension/` - TS WebExtension dark theme via the theme API and custom new tab page.
 
-## skin
+### skin
 
 ```sh
 ./skin/install.sh                # default profile
 ./skin/install.sh /path/to/profile
 ```
 
-Restart Firefox. `user.js` turns on `userChrome.css` loading and vertical tabs. If you already have a `user.js`, merge it by hand — the script overwrites it.
+restart Firefox to apply changes.
 
-## extension
+>[!NOTE]
+> `user.js` turns on `userChrome.css` loading and vertical tabs. If you already have a `user.js`, merge it by hand because the script overwrites it.
+
+### local extension
 
 ```sh
 cd extension
-npm install
+npm i
 npm run build      # dist/
 npm test
 npm run lint
@@ -26,9 +29,9 @@ npm start          # temporary install in a clean firefox profile
 npm run package    # artifacts/*.zip
 ```
 
-For daily use without signing: `about:debugging` → This Firefox → Load Temporary Add-on → `extension/dist/manifest.json` (lost on restart). For a permanent install, sign it as unlisted on addons.mozilla.org, or use Firefox Developer Edition with `xpinstall.signatures.required = false`.
+for daily use without signing: `about:debugging` → This Firefox → Load Temporary Add-on → `extension/dist/manifest.json` (lost on restart). For a permanent install, sign it as unlisted on addons.mozilla.org, or use Firefox Developer Edition with `xpinstall.signatures.required = false`. Currently is signed and stock glass is available in [Releases](https://github.com/KingJayan/glass-fox/releases)
 
-## new tab keys
+### new tab keys
 
 | key | action |
 | --- | --- |
@@ -36,7 +39,7 @@ For daily use without signing: `about:debugging` → This Firefox → Load Tempo
 | `1`–`8` | open top site |
 | `esc` | clear search |
 
-## tokens
+### tokens
 
 | token | value |
 | --- | --- |
